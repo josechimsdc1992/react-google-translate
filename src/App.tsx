@@ -6,6 +6,7 @@ import { Container, Row, Col, Button, Form, Stack } from 'react-bootstrap';
 import { AUTO_LANGUAGE } from './Constants';
 import { LanguageSelector } from './Components/LanguageSelector';
 import { SectionType } from './types.ts';
+import { TextArea } from './Components/TextArea.tsx';
 
 function App() {
   const {
@@ -13,7 +14,12 @@ function App() {
     toLanguage,
     interchangelanguages,
     setFromLanguage,
-    setToLanguage
+    setToLanguage,
+    fromText,
+    result,
+    setFromText,
+    setResult,
+    loading
   }=useStore()
   
   return (
@@ -24,8 +30,8 @@ function App() {
         <Col>
         <Stack gap={2}>
           <LanguageSelector type={SectionType.From} value={fromLanguage} onChange={setFromLanguage}></LanguageSelector>
-          <Form.Control as='textarea' autoFocus placeholder='Estribe el texto' style={{height:'150px'}}>
-          </Form.Control>
+          <TextArea type={SectionType.From} value={fromText} onChange={setFromText}>
+          </TextArea>
         </Stack>
         </Col>
         <Col>
@@ -36,8 +42,8 @@ function App() {
         <Col>
         <Stack gap={2}>
           <LanguageSelector type={SectionType.To} value={toLanguage} onChange={setToLanguage}></LanguageSelector>
-          <Form.Control as='textarea' placeholder='Traduccion' style={{height:'150px'}}>
-          </Form.Control>
+          <TextArea type={SectionType.To} value={result} onChange={setResult} loading={loading}>
+          </TextArea>
         </Stack>
         </Col>
       </Row>
