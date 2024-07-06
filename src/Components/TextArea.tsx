@@ -28,7 +28,7 @@ export const TextArea=({type,loading,value,onChange}:Props)=>{
     commonStyles
     :{...commonStyles,backgroundColor:'#f5f5f5'}
     return(
-        <Form.Control as='textarea' onChange={handleChange} value={value} autoFocus={type==SectionType.From} placeholder={getPlaceholder(type,loading)} style={styles}>
+        <Form.Control as='textarea' disabled={type==SectionType.To} onChange={handleChange} value={value} autoFocus={type==SectionType.From} placeholder={getPlaceholder(type,loading)} style={styles}>
         </Form.Control>
     )
 }
